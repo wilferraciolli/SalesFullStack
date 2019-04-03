@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0;
+  font-family: Segoe UI, Arial, Helvetica, sans-serif;
+}
+
+.col-header-id {
+  width: 150px;
+}
+
+.col-date {
+  text-align: center;
+}
+
+.col-number {
+  text-align: right;
+}
