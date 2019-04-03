@@ -1,5 +1,23 @@
 # SalesUI
 
+To run this project successfully the following need to be run
+
+  npm install primeng primeicons --save
+  npm install --save @angular/cdk
+
+Then add the following to the styles section on hte anglar.json
+     "styles": [
+                "node_modules/primeicons/primeicons.css",
+                "node_modules/primeng/resources/themes/omega/theme.css",
+                "node_modules/primeng/resources/primeng.min.css",
+                "src/styles.css"
+              ]
+  
+Then run the normal ng serve
+
+
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.7.
 
 ## Development server
