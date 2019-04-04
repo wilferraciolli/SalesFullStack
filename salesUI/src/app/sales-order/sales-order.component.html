@@ -1,0 +1,41 @@
+<div class="ui-g">
+  <div class="ui-g-12">
+    <h1>Create new order</h1>
+  </div>
+</div>
+
+<form>
+  <div class="ui-g">
+    <!--  list customers  -->
+    <div class="ui-g-8 ui-fluid">
+      <label>Client</label>
+      <p-dropdown id="client" name="client" placeholder="Select..."
+                  [options]="clients" optionLabel="name"
+                  [(ngModel)]="sale.client" required>
+      </p-dropdown>
+    </div>
+
+    <!--  Price  -->
+    <div class="ui-g-4 ui-fluid">
+      <label>Delivery</label>
+      <input pInputText id="delivery" name="delivery"
+             currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false }"
+             [(ngModel)]="sale.delivery" required/>
+    </div>
+
+    <!--  Items  -->
+    <div class="ui-g-12">
+      <p-panel header="Items">
+        <div class="ui-g">
+          <div class="ui-g-8 ui-fluid">
+            <label>Product</label>
+            <p-dropdown id="product" name="product" placeholder="Select..."
+                        [options]="products" optionLabel="name"
+                        [(ngModel)]="item.product" >
+            </p-dropdown>
+          </div>
+        </div>
+      </p-panel>
+    </div>
+  </div>
+</form>

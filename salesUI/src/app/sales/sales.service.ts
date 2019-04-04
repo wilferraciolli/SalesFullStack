@@ -15,4 +15,12 @@ export class SalesService {
   listSales(): Observable<any> {
     return this.http.get<any>(`${this.api}/sales`);
   }
+
+  listClients(): Observable<any> {
+    return this.http.get<any>(`${this.api}/clients`);
+  }
+
+  listClients(): Observable<any> {
+    return this.http.get<any>(`${this.api}/clients`);
+  }
 }

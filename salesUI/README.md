@@ -15,6 +15,10 @@ Then add the following to the styles section on hte anglar.json
   
 Then run the normal ng serve
 
+Next add the currency mask
+  npm install ng2-currency-mask --save
+
+
 
 
 
