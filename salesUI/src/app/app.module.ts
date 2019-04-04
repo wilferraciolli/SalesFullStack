@@ -10,13 +10,13 @@ import {CurrencyMaskModule} from 'ng2-currency-mask';
 import {TableModule} from 'primeng/table';
 import {DropdownModule, InputTextModule} from 'primeng/primeng';
 import {PanelModule} from 'primeng/primeng';
+import {ButtonModule} from 'primeng/primeng';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {NavbarComponent} from './navbar/navbar.component';
 import {SalesListComponent} from './sales-list/sales-list.component';
 import {SalesOrderComponent} from './sales-order/sales-order.component';
-
 
 // add locale settings
 registerLocaleData(localePt);
@@ -38,6 +38,7 @@ registerLocaleData(localePt);
     CurrencyMaskModule,
     FormsModule,
     PanelModule,
+    ButtonModule,
     AppRoutingModule
   ],
   providers: [

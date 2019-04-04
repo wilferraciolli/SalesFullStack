@@ -20,7 +20,7 @@ export class SalesService {
     return this.http.get<any>(`${this.api}/clients`);
   }
 
-  listClients(): Observable<any> {
-    return this.http.get<any>(`${this.api}/clients`);
+  listProducts(): Observable<any> {
+    return this.http.get<any>(`${this.api}/products`);
   }
 }

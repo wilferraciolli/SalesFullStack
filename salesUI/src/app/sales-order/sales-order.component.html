@@ -31,8 +31,24 @@
             <label>Product</label>
             <p-dropdown id="product" name="product" placeholder="Select..."
                         [options]="products" optionLabel="name"
-                        [(ngModel)]="item.product" >
+                        [(ngModel)]="item.product"
+                        #product>
             </p-dropdown>
+          </div>
+
+          <div class="ui-g-3 ui-fluid">
+            <label>Quantity</label>
+            <input pInputText type="number" id="quantity" name="quantity"
+                   [(ngModel)]="item.quantity"
+                   #quantity/>
+          </div>
+
+          <!-- Add the add button based on product and quantity being on the form -->
+          <div class="ui-g-1 ui-fluid">
+            <br>
+            <button pButton type="button" icon="pi pi-plus"
+                    (click)="addItem" [disabled]="!product.value || !quantity.value">
+            </button>
           </div>
         </div>
       </p-panel>
