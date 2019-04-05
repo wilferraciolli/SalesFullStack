@@ -1,6 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {SalesService} from '../sales/sales.service';
 import {FormGroup} from '@angular/forms';
+import {MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-sales-order',
@@ -16,7 +17,7 @@ export class SalesOrderComponent implements OnInit {
 
   @Output() savedSale = new EventEmitter();
 
-  constructor(private saleService: SalesService) {
+  constructor(private saleService: SalesService, private messageService: MessageService) {
   }
 
   ngOnInit() {
@@ -63,6 +64,9 @@ export class SalesOrderComponent implements OnInit {
         frm.reset();
 
         this.initiateVars();
+
+        // display message
+        this.messageService.add({severity: 'success', detail: 'Order added successfully!'});
 
         // publish an event when a new sale was recorded
         this.savedSale.emit(response);
