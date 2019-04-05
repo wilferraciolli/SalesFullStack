@@ -4,7 +4,7 @@
   </div>
 </div>
 
-<form>
+<form autocomplete="off" #frm="ngForm" (ngSubmit)="addSale()">
   <div class="ui-g">
     <!--  list customers  -->
     <div class="ui-g-8 ui-fluid">
@@ -45,15 +45,15 @@
           </div>
 
           <!-- Add the add button only if product and quantity being on the form -->
-          <div class="ui-g-1 ui-fluid">
+          <div class="ui-g-1 ui-sm-4 ui-fluid">
             <br>
             <button pButton type="button" icon="pi pi-plus"
-                    (click)="addItem"
+                    (click)="addItem()"
                     [disabled]="!product.value || !quantity.value">
             </button>
           </div>
 
-          <!-- Sales panel -->
+          <!-- New Order panel -->
           <div class="ui-g-12">
             <p-table [value]="sale.items">
               <ng-template pTemplate="header">
@@ -69,8 +69,8 @@
                 <tr>
                   <td>{{item.product.name}}</td>
                   <td>{{item.product.value | number:'1.2-2'}}</td>
-                  <td>{{item.product.quantity}}</td>
-                  <td>{{item.product.total | number:'1.2-2'}}</td>
+                  <td>{{item.quantity}}</td>
+                  <td>{{item.total | number:'1.2-2'}}</td>
                 </tr>
               </ng-template>
 
@@ -90,6 +90,12 @@
     <div class="ui-g-4 ui-g-offset-8 ui-fluid">
       <label>Total</label>
       <input pInputText readonly [value]="sale.total |number:'1.2-2'">
+    </div>
+
+    <div class="ui-g-4">
+      <button pButton icon="pi pi-check" label="Save"
+      [disabled]="frm.invalid || sale.items.length === 0" >
+      </button>
     </div>
   </div>
 </form>

@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {SalesService} from '../sales/sales.service';
+import {FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-sales-order',
@@ -8,8 +9,8 @@ import {SalesService} from '../sales/sales.service';
 })
 export class SalesOrderComponent implements OnInit {
 
-  sale: any = {items: [], delivery: 0.0, total: 0.0};
-  item: any = {};
+  sale: any;
+  item: any;
   clients: Array<any>;
   products: Array<any>;
 
@@ -22,6 +23,13 @@ export class SalesOrderComponent implements OnInit {
 
     this.saleService.listProducts()
       .subscribe(response => this.products = response);
+
+    this.initiateVars();
+  }
+
+  initiateVars() {
+    this.sale = {items: [], delivery: 0.0, total: 0.0};
+    this.item = {};
   }
 
   addItem() {
@@ -44,6 +52,16 @@ export class SalesOrderComponent implements OnInit {
       .reduce((total, currentValue) => total + currentValue, 0);
 
     this.sale.total = totalItems + this.sale.delivery;
+  }
+
+  addSale(frm: FormGroup) {
+    this.saleService.addSale(this.sale)
+      .subscribe(response => {
+        // clear the form for new sales to be created
+        frm.reset();
+
+        this.initiateVars();
+      });
   }
 
 }
