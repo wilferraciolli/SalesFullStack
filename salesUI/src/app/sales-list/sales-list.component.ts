@@ -15,8 +15,11 @@ export class SalesListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.listSales();
+  }
+
+  listSales() {
     this.salesService.listSales()
       .subscribe(response => this.sales = response);
   }
-
 }

@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
 
-<app-sales-order></app-sales-order>
+<app-sales-order (savedSale)="listSales.listSales()"></app-sales-order>
 
-<app-sales-list></app-sales-list>
+<app-sales-list #listSales></app-sales-list>

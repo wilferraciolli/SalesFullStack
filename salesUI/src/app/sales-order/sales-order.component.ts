@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {SalesService} from '../sales/sales.service';
 import {FormGroup} from '@angular/forms';
 
@@ -13,6 +13,8 @@ export class SalesOrderComponent implements OnInit {
   item: any;
   clients: Array<any>;
   products: Array<any>;
+
+  @Output() savedSale = new EventEmitter();
 
   constructor(private saleService: SalesService) {
   }
@@ -61,6 +63,9 @@ export class SalesOrderComponent implements OnInit {
         frm.reset();
 
         this.initiateVars();
+
+        // publish an event when a new sale was recorded
+        this.savedSale.emit(response);
       });
   }
 
