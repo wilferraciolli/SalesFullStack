@@ -3,6 +3,9 @@
   <div class="ui-g-12">
 
     <p-table [value]="sales">
+      <ng-template pTemplate="caption">
+        Cart
+      </ng-template>
       <ng-template pTemplate="header">
         <tr>
           <th class="col-header-id">Code</th>

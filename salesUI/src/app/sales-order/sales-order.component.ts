@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SalesService} from '../sales/sales.service';
 
 @Component({
@@ -8,12 +8,13 @@ import {SalesService} from '../sales/sales.service';
 })
 export class SalesOrderComponent implements OnInit {
 
-  sale: any = {items: [] };
+  sale: any = {items: [], delivery: 0.0, total: 0.0};
   item: any = {};
   clients: Array<any>;
   products: Array<any>;
 
-  constructor(private saleService: SalesService) { }
+  constructor(private saleService: SalesService) {
+  }
 
   ngOnInit() {
     this.saleService.listClients()
@@ -25,12 +26,24 @@ export class SalesOrderComponent implements OnInit {
 
   addItem() {
     // Calculate the total
-    this.item.total = this.item.product.value * this.item.quantity;
+    this.item.total = (this.item.product.value * this.item.quantity);
 
     this.sale.items.push(this.item);
 
     // initiates a new the item
     this.item = {};
+
+    // calculate Total
+    this.calculateTotal();
+  }
+
+  calculateTotal() {
+    // calculate order total with delivery
+    const totalItems = this.sale.items
+      .map(item => (item.product.value * item.quantity))
+      .reduce((total, currentValue) => total + currentValue, 0);
+
+    this.sale.total = totalItems + this.sale.delivery;
   }
 
 }
